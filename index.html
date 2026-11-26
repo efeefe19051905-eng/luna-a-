@@ -1,0 +1,55 @@
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Luna AI</title>
+<style>
+body{margin:0;background:#101018;color:white;font-family:Arial;height:100vh;display:flex;flex-direction:column}
+header{text-align:center;padding:20px;background:#191925}
+header h2{color:#d5a5ff}
+#chat{flex:1;overflow-y:auto;padding:20px;display:flex;flex-direction:column;gap:12px}
+.message{padding:14px;border-radius:15px;max-width:80%;overflow-wrap:anywhere}
+.user{align-self:flex-end;background:#7545a5}
+.bot{align-self:flex-start;background:#252535}
+#bottom{display:flex;gap:8px;padding:15px;background:#191925}
+input{flex:1;min-width:0;padding:13px;border-radius:10px;background:#252535;color:white;border:1px solid #555}
+button{padding:12px;border:0;border-radius:10px;background:#a66be0;color:white}
+</style>
+</head>
+<body>
+<header>
+<h2>✦ Luna AI</h2>
+<p>Senin yapay zekâ arkadaşın 💜</p>
+</header>
+<div id="chat">
+<div class="bot message">Merhaba! Ben Luna. Seninle tanıştığıma sevindim 💜</div>
+</div>
+<div id="bottom">
+<input id="msg" placeholder="Luna'ya mesaj yaz...">
+<button onclick="send()">➤</button>
+</div>
+<script>
+function send(){
+let input=document.getElementById("msg");
+let value=input.value.trim();
+if(!value)return;
+let chat=document.getElementById("chat");
+let user=document.createElement("div");
+user.className="message user";
+user.textContent=value;
+chat.appendChild(user);
+input.value="";
+let bot=document.createElement("div");
+bot.className="message bot";
+bot.textContent="Mesajını aldım 💜 Gerçek yapay zekâ bağlantısını sonraki aşamada kuracağız.";
+chat.appendChild(bot);
+chat.scrollTop=chat.scrollHeight;
+}
+document.getElementById("msg").addEventListener("keydown",e=>{
+if(e.key==="Enter")send();
+});
+</script>
+</body>
+</html>
